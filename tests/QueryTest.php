@@ -28,7 +28,7 @@ class QueryTest extends TestCase
     {
         $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
@@ -58,7 +58,7 @@ EOT;
     {
         $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
@@ -108,7 +108,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
     {
@@ -164,7 +164,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
     {
@@ -221,7 +221,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
@@ -283,7 +283,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
     {
@@ -343,7 +343,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
     {
@@ -404,7 +404,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
@@ -479,7 +479,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
@@ -549,7 +549,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
@@ -607,7 +607,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
     {
@@ -659,7 +659,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
@@ -717,7 +717,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
