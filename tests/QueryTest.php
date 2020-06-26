@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class QueryTest extends TestCase
 {
-    private $homeConnectPlusModuleID = '{BB6EF5EE-1437-4C80-A16D-DA0A6C885210}';
+    private $homeConnectPlusModuleID = '{BB6EF5EE-1437-1234-A16D-DA0A6C885210}';
 
     public function setUp(): void
     {
@@ -39,7 +39,7 @@ class QueryTest extends TestCase
             "devices": []
         }
     }]
-}            
+}
 EOT;
 
         $testResponse = <<<'EOT'
@@ -67,11 +67,11 @@ EOT;
         "intent": "action.devices.QUERY",
         "payload": {
             "devices": [{
-                "id": "12345"        
+                "id": "12345"
             }]
         }
     }]
-}            
+}
 EOT;
 
         $testResponse = <<<'EOT'
@@ -121,7 +121,7 @@ EOT;
                 }]
             }
         }]
-    }            
+    }
 EOT;
 
         $testResponse = <<<'EOT'
@@ -177,7 +177,7 @@ EOT;
                 }]
             }
         }]
-    }            
+    }
 EOT;
 
         $testResponse = <<<'EOT'
@@ -239,7 +239,7 @@ EOT;
             }]
         }
     }]
-}          
+}
 EOT;
 
         $testResponse = <<<'EOT'
@@ -296,7 +296,7 @@ EOT;
                 }]
             }
         }]
-    }            
+    }
 EOT;
 
         $testResponse = <<<'EOT'
@@ -356,7 +356,7 @@ EOT;
                 }]
             }
         }]
-    }            
+    }
 EOT;
 
         $testResponse = <<<'EOT'
@@ -422,7 +422,7 @@ EOT;
             }]
         }
     }]
-}          
+}
 EOT;
 
         $testResponse = <<<'EOT'
@@ -497,7 +497,7 @@ EOT;
             }]
         }
     }]
-}          
+}
 EOT;
 
         $testResponse = <<<'EOT'
@@ -567,7 +567,7 @@ EOT;
             }]
         }
     }]
-}       
+}
 EOT;
 
         $testResponse = <<<'EOT'
@@ -620,7 +620,7 @@ EOT;
                 }]
             }
         }]
-    }            
+    }
 EOT;
 
         $testResponse = <<<'EOT'
@@ -677,7 +677,7 @@ EOT;
             }]
         }
     }]
-}       
+}
 EOT;
 
         $testResponse = <<<'EOT'
@@ -735,7 +735,7 @@ EOT;
             }]
         }
     }]
-}       
+}
 EOT;
 
         $testResponse = <<<'EOT'

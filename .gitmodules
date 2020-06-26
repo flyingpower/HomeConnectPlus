@@ -1,6 +1,9 @@
 [submodule "tests/stubs"]
 	path = tests/stubs
 	url = https://github.com/paresy/SymconStubs
+[submodule "HomeConnectPlus/helper"]
+	path = HomeConnectPlus/helper
+	url = https://github.com/symcon/SymconHelper
 [submodule ".style"]
 	path = .style
 	url = https://github.com/symcon/StylePHP

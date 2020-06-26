@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class ExecuteTest extends TestCase
 {
-    private $homeConnectPlusModuleID = '{BB6EF5EE-1437-4C80-A16D-DA0A6C885210}';
+    private $homeConnectPlusModuleID = '{BB6EF5EE-1437-1234-A16D-DA0A6C885210}';
 
     public function setUp(): void
     {
