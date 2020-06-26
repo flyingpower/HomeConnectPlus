@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class BasicFunctionalityTest extends TestCase
 {
-    private $assistantModuleID = '{BB6EF5EE-1437-4C80-A16D-DA0A6C885210}';
+    private $homeConnectPlusModuleID = '{BB6EF5EE-1437-4C80-A16D-DA0A6C885210}';
 
     public function setUp(): void
     {
@@ -26,9 +26,9 @@ class BasicFunctionalityTest extends TestCase
 
     public function testCreate()
     {
-        $previousCount = count(IPS_GetInstanceListByModuleID($this->assistantModuleID));
-        IPS_CreateInstance($this->assistantModuleID);
-        $this->assertEquals($previousCount + 1, count(IPS_GetInstanceListByModuleID($this->assistantModuleID)));
+        $previousCount = count(IPS_GetInstanceListByModuleID($this->homeConnectPlusModuleID));
+        IPS_CreateInstance($this->homeConnectPlusModuleID);
+        $this->assertEquals($previousCount + 1, count(IPS_GetInstanceListByModuleID($this->homeConnectPlusModuleID)));
     }
 
     public function testError()
@@ -39,7 +39,7 @@ class BasicFunctionalityTest extends TestCase
         $vid = IPS_CreateVariable(0 /* Boolean */);
         IPS_SetVariableCustomAction($vid, $sid);
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
         IPS_SetConfiguration($iid, json_encode([
             'DeviceGenericSwitch' => json_encode([
@@ -53,7 +53,7 @@ class BasicFunctionalityTest extends TestCase
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
@@ -73,7 +73,7 @@ class BasicFunctionalityTest extends TestCase
             }]
         }
     }]
-}            
+}
 EOT;
 
         $testResponse = <<<'EOT'
@@ -97,7 +97,7 @@ EOT;
         $activateScriptID = IPS_CreateScript(0);
         $deactivateScriptID = IPS_CreateScript(0);
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
         IPS_SetConfiguration($iid, json_encode([
             'DeviceGenericSwitch' => json_encode([
@@ -119,7 +119,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $references = IPS_GetReferenceList($iid);
 

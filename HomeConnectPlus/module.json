@@ -1,12 +1,12 @@
 {
-  "id": "{BB6EF5EE-1437-4C80-A16D-DA0A6C885210}",
-  "name": "Assistant",
+  "id": "{BB6EF5EE-1437-1234-A16D-DA0A6C885210}",
+  "name": "HomeConnectPlus",
   "type": 0,
-  "vendor": "Google",
+  "vendor": "Residential IoT Services GmbH",
   "aliases":
   [
-    "Google Assistant",
-    "Google Home"
+    "Home Connect Plus",
+    "RIoT"
   ],
   "parentRequirements": [],
   "childRequirements": [],

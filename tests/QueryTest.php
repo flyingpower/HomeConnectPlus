@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class QueryTest extends TestCase
 {
-    private $assistantModuleID = '{BB6EF5EE-1437-4C80-A16D-DA0A6C885210}';
+    private $homeConnectPlusModuleID = '{BB6EF5EE-1437-4C80-A16D-DA0A6C885210}';
 
     public function setUp(): void
     {
@@ -26,7 +26,7 @@ class QueryTest extends TestCase
 
     public function testEmptyQuery()
     {
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
         $this->assertTrue($intf instanceof Assistant);
 
@@ -56,7 +56,7 @@ EOT;
 
     public function testInvalidQuery()
     {
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
         $this->assertTrue($intf instanceof Assistant);
 
@@ -95,7 +95,7 @@ EOT;
         $vid = IPS_CreateVariable(0 /* Boolean */);
         SetValue($vid, false);
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         IPS_SetConfiguration($iid, json_encode([
             'DeviceLightSwitch' => json_encode([
                 [
@@ -151,7 +151,7 @@ EOT;
         IPS_SetVariableCustomProfile($vid, $profile);
         SetValue($vid, 128); //50% auf 256 steps
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         IPS_SetConfiguration($iid, json_encode([
             'DeviceLightDimmer' => json_encode([
                 [
@@ -208,7 +208,7 @@ EOT;
         IPS_SetVariableCustomProfile($vid, $profile);
         SetValue($vid, 0x0000FF); // blue
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         IPS_SetConfiguration($iid, json_encode([
             'DeviceLightColor' => json_encode([
                 [
@@ -268,7 +268,7 @@ EOT;
         $vid = IPS_CreateVariable(0 /* Boolean */);
         SetValue($vid, false);
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         IPS_SetConfiguration($iid, json_encode([
             'DeviceLightSwitch' => json_encode([
                 [
@@ -328,7 +328,7 @@ EOT;
         SetValue($vid, false);
         SetValue($bvid, 128); //50% auf 256 steps
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         IPS_SetConfiguration($iid, json_encode([
             'DeviceLightExpert' => json_encode([
                 [
@@ -389,7 +389,7 @@ EOT;
         SetValue($vid, false);
         SetValue($cvid, 0x0000FF); // blue
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         IPS_SetConfiguration($iid, json_encode([
             'DeviceLightExpert' => json_encode([
                 [
@@ -464,7 +464,7 @@ EOT;
         SetValue($bvid, 128); //50% auf 256 steps
         SetValue($cvid, 0x0000FF); // blue
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         IPS_SetConfiguration($iid, json_encode([
             'DeviceLightExpert' => json_encode([
                 [
@@ -530,7 +530,7 @@ EOT;
         IPS_SetScriptContent($sid, 'SetValue($_IPS[\'VARIABLE\'], $_IPS[\'VALUE\']);');
         IPS_SetVariableCustomAction($setID, $sid);
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
         IPS_SetConfiguration($iid, json_encode([
             'DeviceThermostat' => json_encode([
@@ -594,7 +594,7 @@ EOT;
         $vid = IPS_CreateVariable(0 /* Boolean */);
         SetValue($vid, false);
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         IPS_SetConfiguration($iid, json_encode([
             'DeviceLightSwitch' => json_encode([
                 [
@@ -644,7 +644,7 @@ EOT;
     {
         $activateID = IPS_CreateScript(0);
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
         IPS_SetConfiguration($iid, json_encode([
             'DeviceSceneSimple' => json_encode([
@@ -701,7 +701,7 @@ EOT;
         $activateID = IPS_CreateScript(0);
         $deactivateID = IPS_CreateScript(0);
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
         IPS_SetConfiguration($iid, json_encode([
             'DeviceSceneDeactivatable' => json_encode([

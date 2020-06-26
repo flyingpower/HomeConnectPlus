@@ -9,7 +9,7 @@ include_once __DIR__ . '/helper/autoload.php';
 include_once __DIR__ . '/traits/autoload.php';
 include_once __DIR__ . '/types/autoload.php';
 
-class Assistant extends IPSModule
+class HomeConnectPlus extends IPSModule
 {
     use WebOAuth;
     use Simulate;
@@ -181,7 +181,7 @@ class Assistant extends IPSModule
         $ids = IPS_GetInstanceListByModuleID('{9486D575-BE8C-4ED8-B5B5-20930E26DE6F}'); // Connect Control
 
         // TODO: Rebuild for multiple status, once we have status codes that don't run ApplyChanges regularly
-        $inactiveMessage = 'License is not yet linked with Google Assistant!';
+        $inactiveMessage = 'License is not yet linked with HomeConnectPlus!';
         if ((count($ids) < 1) || (IPS_GetInstance($ids[0])['InstanceStatus'] != 102)) {
             $inactiveMessage = 'Symcon Connect is not active!';
         }

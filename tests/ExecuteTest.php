@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class ExecuteTest extends TestCase
 {
-    private $assistantModuleID = '{BB6EF5EE-1437-4C80-A16D-DA0A6C885210}';
+    private $homeConnectPlusModuleID = '{BB6EF5EE-1437-4C80-A16D-DA0A6C885210}';
 
     public function setUp(): void
     {
@@ -26,9 +26,9 @@ class ExecuteTest extends TestCase
 
     public function testEmptyExecute()
     {
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
@@ -43,7 +43,7 @@ class ExecuteTest extends TestCase
     }
 
   }]
-}            
+}
 EOT;
 
         $testResponse = <<<'EOT'
@@ -66,7 +66,7 @@ EOT;
         $vid = IPS_CreateVariable(0 /* Boolean */);
         IPS_SetVariableCustomAction($vid, $sid);
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
         IPS_SetConfiguration($iid, json_encode([
             'DeviceLightSwitch' => json_encode([
@@ -81,7 +81,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
@@ -102,7 +102,7 @@ EOT;
             }]
         }
     }]
-}            
+}
 EOT;
 
         $testResponse = <<<'EOT'
@@ -147,7 +147,7 @@ EOT;
             }]
         }
     }]
-}            
+}
 EOT;
 
         $testResponse = <<<'EOT'
@@ -184,7 +184,7 @@ EOT;
             $vid2 = IPS_CreateVariable(0 /* Boolean */);
             IPS_SetVariableCustomAction($vid2, $sid);
 
-            $iid = IPS_CreateInstance($this->assistantModuleID);
+            $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
             IPS_SetConfiguration($iid, json_encode([
                 'DeviceLightSwitch' => json_encode([
@@ -204,7 +204,7 @@ EOT;
             IPS_ApplyChanges($iid);
 
             $intf = IPS\InstanceManager::getInstanceInterface($iid);
-            $this->assertTrue($intf instanceof Assistant);
+            $this->assertTrue($intf instanceof HomeConnectPlus);
 
             $testRequest = <<<'EOT'
 {
@@ -227,7 +227,7 @@ EOT;
             }]
         }
     }]
-}            
+}
 EOT;
 
             $testResponse = <<<'EOT'
@@ -279,7 +279,7 @@ EOT;
             }]
         }
     }]
-}            
+}
 EOT;
 
             $testResponse = <<<'EOT'
@@ -325,7 +325,7 @@ EOT;
             $vid = IPS_CreateVariable(0 /* Boolean */);
             IPS_SetVariableCustomAction($vid, $sid);
 
-            $iid = IPS_CreateInstance($this->assistantModuleID);
+            $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
             IPS_SetConfiguration($iid, json_encode([
                 'DeviceLightSwitch' => json_encode([
@@ -340,7 +340,7 @@ EOT;
             IPS_ApplyChanges($iid);
 
             $intf = IPS\InstanceManager::getInstanceInterface($iid);
-            $this->assertTrue($intf instanceof Assistant);
+            $this->assertTrue($intf instanceof HomeConnectPlus);
 
             $testRequest = <<<'EOT'
 {
@@ -361,7 +361,7 @@ EOT;
             }]
         }
     }]
-}            
+}
 EOT;
 
             $testResponse = <<<'EOT'
@@ -404,7 +404,7 @@ EOT;
             IPS_SetVariableCustomProfile($vid, $profile);
             IPS_SetVariableCustomAction($vid, $sid);
 
-            $iid = IPS_CreateInstance($this->assistantModuleID);
+            $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
             IPS_SetConfiguration($iid, json_encode([
                 'DeviceLightDimmer' => json_encode([
@@ -419,7 +419,7 @@ EOT;
             IPS_ApplyChanges($iid);
 
             $intf = IPS\InstanceManager::getInstanceInterface($iid);
-            $this->assertTrue($intf instanceof Assistant);
+            $this->assertTrue($intf instanceof HomeConnectPlus);
 
             $testRequest = <<<'EOT'
 {
@@ -440,7 +440,7 @@ EOT;
             }]
         }
     }]
-}            
+}
 EOT;
 
             $testResponse = <<<'EOT'
@@ -483,7 +483,7 @@ EOT;
             IPS_SetVariableCustomProfile($vid, $profile);
             IPS_SetVariableCustomAction($vid, $sid);
 
-            $iid = IPS_CreateInstance($this->assistantModuleID);
+            $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
             IPS_SetConfiguration($iid, json_encode([
                 'DeviceLightColor' => json_encode([
@@ -498,7 +498,7 @@ EOT;
             IPS_ApplyChanges($iid);
 
             $intf = IPS\InstanceManager::getInstanceInterface($iid);
-            $this->assertTrue($intf instanceof Assistant);
+            $this->assertTrue($intf instanceof HomeConnectPlus);
 
             $testRequest = <<<'EOT'
 {
@@ -611,7 +611,7 @@ EOT;
             $vid = IPS_CreateVariable(0 /* Boolean */);
             IPS_SetVariableCustomAction($vid, $sid);
 
-            $iid = IPS_CreateInstance($this->assistantModuleID);
+            $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
             IPS_SetConfiguration($iid, json_encode([
                 'DeviceLightExpert' => json_encode([
@@ -628,7 +628,7 @@ EOT;
             IPS_ApplyChanges($iid);
 
             $intf = IPS\InstanceManager::getInstanceInterface($iid);
-            $this->assertTrue($intf instanceof Assistant);
+            $this->assertTrue($intf instanceof HomeConnectPlus);
 
             $testRequest = <<<'EOT'
 {
@@ -649,7 +649,7 @@ EOT;
             }]
         }
     }]
-}            
+}
 EOT;
 
             $testResponse = <<<'EOT'
@@ -694,7 +694,7 @@ EOT;
             IPS_SetVariableCustomAction($vid, $sid);
             IPS_SetVariableCustomAction($bvid, $sid);
 
-            $iid = IPS_CreateInstance($this->assistantModuleID);
+            $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
             IPS_SetConfiguration($iid, json_encode([
                 'DeviceLightExpert' => json_encode([
@@ -711,7 +711,7 @@ EOT;
             IPS_ApplyChanges($iid);
 
             $intf = IPS\InstanceManager::getInstanceInterface($iid);
-            $this->assertTrue($intf instanceof Assistant);
+            $this->assertTrue($intf instanceof HomeConnectPlus);
 
             $testRequest = <<<'EOT'
 {
@@ -732,7 +732,7 @@ EOT;
             }]
         }
     }]
-}            
+}
 EOT;
 
             $testResponse = <<<'EOT'
@@ -779,7 +779,7 @@ EOT;
             IPS_SetVariableCustomAction($vid, $sid);
             IPS_SetVariableCustomAction($cvid, $sid);
 
-            $iid = IPS_CreateInstance($this->assistantModuleID);
+            $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
             IPS_SetConfiguration($iid, json_encode([
                 'DeviceLightExpert' => json_encode([
@@ -796,7 +796,7 @@ EOT;
             IPS_ApplyChanges($iid);
 
             $intf = IPS\InstanceManager::getInstanceInterface($iid);
-            $this->assertTrue($intf instanceof Assistant);
+            $this->assertTrue($intf instanceof HomeConnectPlus);
 
             $testRequest = <<<'EOT'
 {
@@ -879,7 +879,7 @@ EOT;
             IPS_SetVariableCustomAction($bvid, $sid);
             IPS_SetVariableCustomAction($cvid, $sid);
 
-            $iid = IPS_CreateInstance($this->assistantModuleID);
+            $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
             IPS_SetConfiguration($iid, json_encode([
                 'DeviceLightExpert' => json_encode([
@@ -896,7 +896,7 @@ EOT;
             IPS_ApplyChanges($iid);
 
             $intf = IPS\InstanceManager::getInstanceInterface($iid);
-            $this->assertTrue($intf instanceof Assistant);
+            $this->assertTrue($intf instanceof HomeConnectPlus);
 
             $testRequest = <<<'EOT'
 {
@@ -1009,7 +1009,7 @@ EOT;
             IPS_SetScriptContent($sid, 'SetValue($_IPS[\'VARIABLE\'], $_IPS[\'VALUE\']);');
             IPS_SetVariableCustomAction($setID, $sid);
 
-            $iid = IPS_CreateInstance($this->assistantModuleID);
+            $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
             IPS_SetConfiguration($iid, json_encode([
                 'DeviceThermostat' => json_encode([
@@ -1027,7 +1027,7 @@ EOT;
             SetValue($observeID, 42.2);
 
             $intf = IPS\InstanceManager::getInstanceInterface($iid);
-            $this->assertTrue($intf instanceof Assistant);
+            $this->assertTrue($intf instanceof HomeConnectPlus);
 
             $testRequest = <<<'EOT'
 {
@@ -1173,7 +1173,7 @@ EOT;
             $vid = IPS_CreateVariable(0 /* Boolean */);
             IPS_SetVariableCustomAction($vid, $sid);
 
-            $iid = IPS_CreateInstance($this->assistantModuleID);
+            $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
             IPS_SetConfiguration($iid, json_encode([
                 'DeviceGenericSwitch' => json_encode([
@@ -1188,7 +1188,7 @@ EOT;
             IPS_ApplyChanges($iid);
 
             $intf = IPS\InstanceManager::getInstanceInterface($iid);
-            $this->assertTrue($intf instanceof Assistant);
+            $this->assertTrue($intf instanceof HomeConnectPlus);
 
             $testRequest = <<<'EOT'
 {
@@ -1209,7 +1209,7 @@ EOT;
             }]
         }
     }]
-}            
+}
 EOT;
 
             $testResponse = <<<'EOT'
@@ -1246,7 +1246,7 @@ EOT;
             SetValue(' . $colorVariableID . ', 0xff0000);
         ?>');
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
         IPS_SetConfiguration($iid, json_encode([
             'DeviceSceneSimple' => json_encode([
@@ -1261,7 +1261,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {
@@ -1327,7 +1327,7 @@ EOT;
             SetValue(' . $colorVariableID . ', 0x000000);
         ?>');
 
-        $iid = IPS_CreateInstance($this->assistantModuleID);
+        $iid = IPS_CreateInstance($this->homeConnectPlusModuleID);
 
         IPS_SetConfiguration($iid, json_encode([
             'DeviceSceneDeactivatable' => json_encode([
@@ -1343,7 +1343,7 @@ EOT;
         IPS_ApplyChanges($iid);
 
         $intf = IPS\InstanceManager::getInstanceInterface($iid);
-        $this->assertTrue($intf instanceof Assistant);
+        $this->assertTrue($intf instanceof HomeConnectPlus);
 
         $testRequest = <<<'EOT'
 {

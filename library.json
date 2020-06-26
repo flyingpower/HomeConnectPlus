@@ -1,13 +1,13 @@
 {
-    "id": "{E7275AC2-FBA2-4DD3-A38E-A1B4299116A4}",
-    "author": "Symcon GmbH",
-    "name": "Assistant",
+    "id": "{E7275AC2-FBA2-1234-A38E-A1B4299116A4}",
+    "author": "Residential IoT Services GmbH",
+    "name": "HomeConnectPlus",
     "url": "",
     "compatibility": {
         "version": "5.0",
         "date": 1531605600
     },
-    "version": "1.2",
-    "build": 7,
+    "version": "0.1",
+    "build": 0,
     "date": 0
 }

@@ -13,6 +13,6 @@ class ValidationTest extends TestCaseSymconValidation
 
     public function testValidateAssistant(): void
     {
-        $this->validateModule(__DIR__ . '/../Assistant');
+        $this->validateModule(__DIR__ . '/../HomeConnectPlus');
     }
 }
