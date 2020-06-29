@@ -20,6 +20,7 @@ class HomeConnectPlus extends IPSModule
     public function __construct($InstanceID)
     {
         parent::__construct($InstanceID);
+        $this->LogMessage('#HCP in constructor', KL_ERROR);
 
         $this->registry = new DeviceTypeRegistry(
             $this->InstanceID,
@@ -38,6 +39,8 @@ class HomeConnectPlus extends IPSModule
     {
         //Never delete this line!
         parent::Create();
+
+        $this->LogMessage('#HCP in create', KL_ERROR);
 
         if (!IPS_VariableProfileExists('ThermostatMode.GA')) {
             IPS_CreateVariableProfile('ThermostatMode.GA', 1);
@@ -63,6 +66,8 @@ class HomeConnectPlus extends IPSModule
     {
         //Never delete this line!
         parent::ApplyChanges();
+
+        $this->LogMessage('#HCP in applyChanges', KL_ERROR);
 
         $this->RegisterOAuth('home_connect_plus');
 
@@ -104,6 +109,7 @@ class HomeConnectPlus extends IPSModule
 
     public function MessageSink($timestamp, $senderID, $messageID, $data)
     {
+        $this->LogMessage('#HCP in MessageSink', KL_ERROR);
         switch ($messageID) {
             case VM_UPDATE:
                 $variableUpdateSemaphore = IPS_SemaphoreEnter('VariableUpdateSemaphore', 500);
@@ -209,6 +215,7 @@ class HomeConnectPlus extends IPSModule
 
     public function RequestSync()
     {
+        $this->LogMessage('#HCP in requestsync', KL_ERROR);
         //Check Connect availability
         $ids = IPS_GetInstanceListByModuleID('{9486D575-BE8C-4ED8-B5B5-20930E26DE6F}'); // Connect Control
 
@@ -265,6 +272,7 @@ class HomeConnectPlus extends IPSModule
     protected function ProcessData(array $data): array
     {
         $this->SendDebug('Request', json_encode($data), 0);
+        $this->LogMessage(json_encode($data), KL_ERROR);
 
         // If we receive a message, then everything must be fine
         $this->SetStatus(102);
