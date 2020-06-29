@@ -64,7 +64,7 @@ class HomeConnectPlus extends IPSModule
         //Never delete this line!
         parent::ApplyChanges();
 
-        $this->RegisterOAuth('google_smarthome');
+        $this->RegisterOAuth('home_connect_plus');
 
         // We need to check for IDs that are empty and assign a proper ID
         $this->registry->updateProperties();
