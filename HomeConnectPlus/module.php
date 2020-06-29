@@ -78,7 +78,7 @@ class HomeConnectPlus extends IPSModule
         // Sync on startup is relevant as we need to update the status
         if (IPS_GetKernelRunlevel() == KR_READY) {
             // RequestSync updates the status as well
-            $this->RequestSync();
+            //$this->RequestSync();
         }
 
         $objectIDs = $this->registry->getObjectIDs();
@@ -127,7 +127,7 @@ class HomeConnectPlus extends IPSModule
 
             case IPS_KERNELMESSAGE:
                 if ($data[0] == KR_READY) {
-                    $this->RequestSync();
+                    //$this->RequestSync();
                 }
                 break;
         }
@@ -213,6 +213,7 @@ class HomeConnectPlus extends IPSModule
             ]]);
     }
 
+/*
     public function RequestSync()
     {
         $this->LogMessage('#HCP in requestsync', KL_ERROR);
@@ -268,7 +269,7 @@ class HomeConnectPlus extends IPSModule
             }
         }
     }
-
+*/
     protected function ProcessData(array $data): array
     {
         $this->SendDebug('Request', json_encode($data), 0);
