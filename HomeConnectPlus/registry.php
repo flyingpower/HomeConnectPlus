@@ -195,13 +195,13 @@ class DeviceTypeRegistry
         }
 
         //This is available with IP-Symcon 5.4 (July 2020)
-        if (function_exists('CC_SendGoogleAssistantStateReport')) {
-            $states = json_encode($states);
-
-            ($this->sendDebug)('States', $states, 0);
-
-            CC_SendGoogleAssistantStateReport($connectControlIDs[0], $states);
-        } else {
+        // if (function_exists('CC_SendGoogleAssistantStateReport')) {
+        //     $states = json_encode($states);
+        //
+        //     ($this->sendDebug)('States', $states, 0);
+        //
+        //     CC_SendGoogleAssistantStateReport($connectControlIDs[0], $states);
+        // } else {
             $guid = sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
             $jsonRequest = json_encode([
                 'requestId'   => $guid,
@@ -215,8 +215,8 @@ class DeviceTypeRegistry
 
             ($this->sendDebug)('JSON Request', $jsonRequest, 0);
 
-            $response = CC_MakeRequest($connectControlIDs[0], '/google/reportstate', $jsonRequest);
-        }
+            // $response = CC_MakeRequest($connectControlIDs[0], '/google/reportstate', $jsonRequest);
+        // }
 
         return true;
     }
