@@ -46,12 +46,15 @@ class DeviceTypeRegistry
 
     public function registerWebhook(string $webhook): void
     {
+        $this->LogMessage('#HCP register Webhook: '.$webhook, KL_ERROR);
+        ($this->registerProperty)(self::webhookPrefix, '');
         IPS_SetProperty($this->instanceID, self::webhookPrefix, $webhook);
         IPS_ApplyChanges($this->instanceID);
     }
 
     public function unregisterWebhook(): void
     {
+        $this->LogMessage('#HCP unregister Webhook', KL_ERROR);
         IPS_SetProperty($this->instanceID, self::webhookPrefix, '');
         IPS_ApplyChanges($this->instanceID);
     }
@@ -231,7 +234,11 @@ class DeviceTypeRegistry
 
             ($this->sendDebug)('JSON Request', $jsonRequest, 0);
 
+            // TEST
+            $this->registerWebhook('https://webhook.site/0cefbd53-19fb-4558-8022-471fea89074c');
+
         		$url = IPS_GetProperty($this->instanceID, self::webhookPrefix);
+            ($this->sendDebug)('Webhook', url, 0);
         		$ch = curl_init($url);
       	    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
         		curl_setopt($ch, CURLOPT_HTTPHEADER, array(

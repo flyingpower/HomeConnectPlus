@@ -60,6 +60,7 @@ class HomeConnectPlus extends IPSModule
         $this->registry->registerProperties();
 
         $this->RegisterPropertyBoolean('EmulateStatus', false);
+
     }
 
     public function ApplyChanges()
@@ -105,6 +106,7 @@ class HomeConnectPlus extends IPSModule
         }
 
         $this->RegisterMessage(0, IPS_KERNELMESSAGE);
+
     }
 
     public function MessageSink($timestamp, $senderID, $messageID, $data)
