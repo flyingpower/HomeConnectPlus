@@ -6,6 +6,7 @@ class DeviceTypeRegistry
 {
     const classPrefix = 'DeviceType';
     const propertyPrefix = 'Device';
+    const webhookPrefix = 'Webhook';
 
     private static $supportedDeviceTypes = [];
 
@@ -38,6 +39,21 @@ class DeviceTypeRegistry
         foreach (self::$supportedDeviceTypes as $actionType) {
             ($this->registerProperty)(self::propertyPrefix . $actionType, '[]');
         }
+
+        ($this->registerProperty)(self::webhookPrefix, '');
+
+    }
+
+    public function registerWebhook(string $webhook): void
+    {
+        IPS_SetProperty($this->instanceID, self::webhookPrefix, $webhook);
+        IPS_ApplyChanges($this->instanceID);
+    }
+
+    public function unregisterWebhook(): void
+    {
+        IPS_SetProperty($this->instanceID, self::webhookPrefix, '');
+        IPS_ApplyChanges($this->instanceID);
     }
 
     public function updateProperties(): void
@@ -214,6 +230,21 @@ class DeviceTypeRegistry
             ]);
 
             ($this->sendDebug)('JSON Request', $jsonRequest, 0);
+
+        		$url = IPS_GetProperty($this->instanceID, self::webhookPrefix);
+        		$ch = curl_init($url);
+      	    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        		    'Content-Type: application/json',
+        		    'Content-Length: ' . strlen($jsonRequest))
+        		);
+        		curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonRequest);
+        		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        		curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1);
+        		curl_setopt($ch, CURLOPT_RETURNTRANSFER,0);
+        		$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);   //get status code
+        		$result = curl_exec ($ch);
+        		curl_close ($ch);
 
             // $response = CC_MakeRequest($connectControlIDs[0], '/google/reportstate', $jsonRequest);
         // }

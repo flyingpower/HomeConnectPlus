@@ -393,6 +393,31 @@ class HomeConnectPlus extends IPSModule
         ];
     }
 
+    /*
+    {
+        "requestId": "ff36a3cc-ec34-11e6-b1a0-64510650abcf",
+        "inputs": [{
+            "intent": "registerWebhook",
+            "payload": {
+                "webhook": "https://qa.riot-platform.com/webhooks/webhook/data/Symcon/a38782ab-66a4-4b73-9e85-adce8ff66c81"
+            }
+        }]
+    }
+    */
+    private function RegisterWebhook($payload): array
+    {
+        if (!isset($payload['webhook'])) {
+            throw new Exception('webhook is undefined');
+        }
+        $webhook = $payload['webhook'];
+        $this->registry->registerWebhook($webhook);
+    }
+
+    private function UnregisterWebhook($payload): array
+    {
+        $this->registry->unregisterWebhook();
+    }
+
     //See: https://developers.google.com/actions/smarthome/create-app
     private function ProcessRequest($request): array
     {
@@ -417,6 +442,12 @@ class HomeConnectPlus extends IPSModule
                 break;
             case 'action.devices.EXECUTE':
                 $payload = $this->ProcessExecute($input['payload']);
+                break;
+            case 'registerWebhook':
+                $payload = $this->RegisterWebhook($input['payload']);
+                break;
+            case 'unregisterWebhook':
+                $payload = $this->UnregisterWebhook($input['payload']);
                 break;
             default:
                 throw new Exception('Invalid intent');
