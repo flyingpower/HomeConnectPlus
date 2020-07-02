@@ -211,48 +211,34 @@ class DeviceTypeRegistry
             return false;
         }
 
-        //This is available with IP-Symcon 5.4 (July 2020)
-        // if (function_exists('CC_SendGoogleAssistantStateReport')) {
-        //     $states = json_encode($states);
-        //
-        //     ($this->sendDebug)('States', $states, 0);
-        //
-        //     CC_SendGoogleAssistantStateReport($connectControlIDs[0], $states);
-        // } else {
-            $guid = sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
-            $jsonRequest = json_encode([
-                'requestId'   => $guid,
-                'agentUserId' => md5(IPS_GetLicensee()),
-                'payload'     => [
-                    'devices' => [
-                        'states' => $states
-                    ]
+        $guid = sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+        $jsonRequest = json_encode([
+            'requestId'   => $guid,
+            'agentUserId' => md5(IPS_GetLicensee()),
+            'payload'     => [
+                'devices' => [
+                    'states' => $states
                 ]
-            ]);
+            ]
+        ]);
 
-            ($this->sendDebug)('JSON Request', $jsonRequest, 0);
+        ($this->sendDebug)('JSON Request', $jsonRequest, 0);
 
-            // TEST
-            $this->registerWebhook('https://webhook.site/0cefbd53-19fb-4558-8022-471fea89074c');
-
-        		$url = IPS_GetProperty($this->instanceID, self::webhookPrefix);
-            ($this->sendDebug)('Webhook', url, 0);
-        		$ch = curl_init($url);
-      	    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-        		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        		    'Content-Type: application/json',
-        		    'Content-Length: ' . strlen($jsonRequest))
-        		);
-        		curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonRequest);
-        		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-        		curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1);
-        		curl_setopt($ch, CURLOPT_RETURNTRANSFER,0);
-        		$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);   //get status code
-        		$result = curl_exec ($ch);
-        		curl_close ($ch);
-
-            // $response = CC_MakeRequest($connectControlIDs[0], '/google/reportstate', $jsonRequest);
-        // }
+    		$url = IPS_GetProperty($this->instanceID, self::webhookPrefix);
+        ($this->sendDebug)('Webhook', $url, 0);
+    		$ch = curl_init($url);
+  	    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    		    'Content-Type: application/json',
+    		    'Content-Length: ' . strlen($jsonRequest))
+    		);
+    		curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonRequest);
+    		curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    		curl_setopt($ch, CURLOPT_FOLLOWLOCATION,1);
+    		curl_setopt($ch, CURLOPT_RETURNTRANSFER,0);
+    		$status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);   //get status code
+    		$result = curl_exec ($ch);
+    		curl_close ($ch);
 
         return true;
     }
