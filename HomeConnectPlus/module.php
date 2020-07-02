@@ -439,7 +439,7 @@ class HomeConnectPlus extends IPSModule
             case 'action.devices.SYNC':
                 $payload = $this->ProcessSync();
                 // TEST
-                $this->RegisterWebhook('https://webhook.site/0cefbd53-19fb-4558-8022-471fea89074c');
+                //$this->RegisterWebhook('https://webhook.site/0cefbd53-19fb-4558-8022-471fea89074c');
                 break;
             case 'action.devices.QUERY':
                 $payload = $this->ProcessQuery($input['payload']);
