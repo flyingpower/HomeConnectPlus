@@ -20,14 +20,14 @@ class DeviceTypeLightExpert
 
     public static function getCaption()
     {
-        return 'Light (Expert)';
+        return 'Light (Color)';
     }
 
     public static function getTranslations()
     {
         return [
             'de' => [
-                'Light (Expert)'      => 'Licht (Experte)',
+                'Light (Color)'      => 'Licht (Farbe)',
                 'Switch Variable'     => 'Schaltervariable',
                 'Brightness Variable' => 'Helligkeitsvariable',
                 'Color Variable'      => 'Farbvariable'
