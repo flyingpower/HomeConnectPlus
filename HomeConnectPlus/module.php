@@ -20,7 +20,6 @@ class HomeConnectPlus extends IPSModule
     public function __construct($InstanceID)
     {
         parent::__construct($InstanceID);
-        $this->LogMessage('#HCP in constructor', KL_ERROR);
 
         $this->registry = new DeviceTypeRegistry(
             $this->InstanceID,
@@ -39,8 +38,6 @@ class HomeConnectPlus extends IPSModule
     {
         //Never delete this line!
         parent::Create();
-
-        $this->LogMessage('#HCP in create', KL_ERROR);
 
         if (!IPS_VariableProfileExists('ThermostatMode.GA')) {
             IPS_CreateVariableProfile('ThermostatMode.GA', 1);
@@ -67,8 +64,6 @@ class HomeConnectPlus extends IPSModule
     {
         //Never delete this line!
         parent::ApplyChanges();
-
-        $this->LogMessage('#HCP in applyChanges', KL_ERROR);
 
         $this->RegisterOAuth('home_connect_plus');
 
@@ -111,7 +106,6 @@ class HomeConnectPlus extends IPSModule
 
     public function MessageSink($timestamp, $senderID, $messageID, $data)
     {
-        $this->LogMessage('#HCP in MessageSink', KL_ERROR);
         switch ($messageID) {
             case VM_UPDATE:
                 $variableUpdateSemaphore = IPS_SemaphoreEnter('VariableUpdateSemaphore', 500);
@@ -215,63 +209,6 @@ class HomeConnectPlus extends IPSModule
             ]]);
     }
 
-/*
-    public function RequestSync()
-    {
-        $this->LogMessage('#HCP in requestsync', KL_ERROR);
-        //Check Connect availability
-        $ids = IPS_GetInstanceListByModuleID('{9486D575-BE8C-4ED8-B5B5-20930E26DE6F}'); // Connect Control
-
-        if ((count($ids) < 1) || (IPS_GetInstance($ids[0])['InstanceStatus'] != 102)) {
-            $this->SetStatus(104);
-            if (method_exists($this, 'ReloadForm')) {
-                $this->ReloadForm();
-            }
-            return;
-        } else {
-            $this->SetStatus(102);
-        }
-        $data = json_encode([
-            'agentUserId' => md5(IPS_GetLicensee())
-        ]);
-
-        $result = @file_get_contents('https://homegraph.googleapis.com/v1/devices:requestSync?key=' . $this->apiKey, false, stream_context_create([
-            'http' => [
-                'method'           => 'POST',
-                'header'           => "Content-type: application/json\r\nConnection: close\r\nContent-length: " . strlen($data) . "\r\n",
-                'content'          => $data,
-                'ignore_errors'    => true
-            ],
-        ]));
-
-        if ($result === false) {
-            echo "Request Sync Failed: \n" . json_encode(error_get_last());
-        } elseif (json_decode($result, true) !== []) {
-            $this->SendDebug('Request Sync Failed', $result, 0);
-            $decode = json_decode($result, true);
-            if (isset($decode['error']['message'])) {
-                switch ($decode['error']['message']) {
-                    case 'Requested entity was not found.':
-                        $this->SetStatus(104);
-                        if (method_exists($this, 'ReloadForm')) {
-                            $this->ReloadForm();
-                        }
-                        break;
-
-                    case 'The caller does not have permission':
-                        $this->SetStatus(200);
-                        break;
-
-                    default:
-                        echo "Request Sync Failed: \n" . $decode['error']['message'];
-                        break;
-                }
-            } else {
-                echo 'Request Sync Failed!';
-            }
-        }
-    }
-*/
     protected function ProcessData(array $data): array
     {
         $this->SendDebug('Request', json_encode($data), 0);

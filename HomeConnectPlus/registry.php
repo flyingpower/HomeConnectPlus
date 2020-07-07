@@ -45,14 +45,12 @@ class DeviceTypeRegistry
 
     public function registerWebhook(string $webhook): void
     {
-        ($this->sendDebug)('#HCP register Webhook: ', $webhook, 0);
         IPS_SetProperty($this->instanceID, self::webhookPrefix, $webhook);
         IPS_ApplyChanges($this->instanceID);
     }
 
     public function unregisterWebhook(): void
     {
-        ($this->sendDebug)('#HCP unregister Webhook: ', '', 0);
         IPS_SetProperty($this->instanceID, self::webhookPrefix, '');
         IPS_ApplyChanges($this->instanceID);
     }
