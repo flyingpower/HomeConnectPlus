@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 class DeviceTraitMeter
 {
-    use HelperFloatDevice;
+    use HelperNumberDevice;
     use HelperSetDevice;
     const propertyPrefix = 'Meter';
 
@@ -34,12 +34,12 @@ class DeviceTraitMeter
 
     public static function getStatus($configuration)
     {
-        $currentStatus = self::getGetFloatCompatibility($configuration[self::propertyPrefix . 'CurrentID']);
+        $currentStatus = self::getGetNumberCompatibility($configuration[self::propertyPrefix . 'CurrentID']);
         if ($currentStatus != 'OK') {
             return 'Current: ' . $currentStatus;
         }
 
-        $totalStatus = self::getGetFloatCompatibility($configuration[self::propertyPrefix . 'TotalID']);
+        $totalStatus = self::getGetNumberCompatibility($configuration[self::propertyPrefix . 'TotalID']);
         if ($totalStatus != 'OK') {
             return 'Total: ' . $totalStatus;
         }
