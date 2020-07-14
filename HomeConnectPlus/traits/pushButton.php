@@ -13,7 +13,7 @@ class DeviceTraitButton
         return [
             [
                 'label' => 'Press',
-                'name'  => self::propertyPrefix . 'PressID',
+                'name'  => self::propertyPrefix . 'ShortID',
                 'width' => '200px',
                 'add'   => 0,
                 'edit'  => [
@@ -25,7 +25,7 @@ class DeviceTraitButton
 
     public static function getStatus($configuration)
     {
-        $currentStatus = self::getBoolCompatibility($configuration[self::propertyPrefix . 'PressID']);
+        $currentStatus = self::getBoolCompatibility($configuration[self::propertyPrefix . 'ShortID']);
         if ($currentStatus != 'OK') {
             return 'Press: ' . $currentStatus;
         }
@@ -39,9 +39,9 @@ class DeviceTraitButton
 
     public static function doQuery($configuration)
     {
-        if (IPS_VariableExists($configuration[self::propertyPrefix . 'PressID'])) {
+        if (IPS_VariableExists($configuration[self::propertyPrefix . 'ShortID'])) {
             return [
-                'press'  => GetValue($configuration[self::propertyPrefix . 'PressID'])
+                'press'  => GetValue($configuration[self::propertyPrefix . 'ShortID'])
             ];
         } else {
             return [];
@@ -56,7 +56,7 @@ class DeviceTraitButton
     public static function getObjectIDs($configuration)
     {
         return [
-            $configuration[self::propertyPrefix . 'PressID']
+            $configuration[self::propertyPrefix . 'ShortID']
         ];
     }
 
