@@ -49,12 +49,12 @@ class DeviceTraitButton
         }
 
         $currentStatus = self::getBoolCompatibility($configuration[self::propertyPrefix . 'LongID']);
-        if ($currentStatus != 'OK') {
+        if ($currentStatus != 'Missing' && $currentStatus != 'OK') {
             return 'Long: ' . $currentStatus;
         }
 
         $currentStatus = self::getBoolCompatibility($configuration[self::propertyPrefix . 'DoubleID']);
-        if ($currentStatus != 'OK') {
+        if ($currentStatus != 'Missing' && $currentStatus != 'OK') {
             return 'Double: ' . $currentStatus;
         }
 
@@ -87,9 +87,9 @@ class DeviceTraitButton
     public static function getObjectIDs($configuration)
     {
         return [
-            $configuration[self::propertyPrefix . 'shortID'],
-            $configuration[self::propertyPrefix . 'longID'],
-            $configuration[self::propertyPrefix . 'doubleID']
+            $configuration[self::propertyPrefix . 'ShortID'],
+            $configuration[self::propertyPrefix . 'LongID'],
+            $configuration[self::propertyPrefix . 'DoubleID']
         ];
     }
 
