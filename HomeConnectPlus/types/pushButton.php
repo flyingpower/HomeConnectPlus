@@ -27,9 +27,7 @@ class DeviceTypePushButton
     {
         return [
             'de' => [
-                'Short press' => 'Kurzer Druck',
-                'Long press'       => 'Langer Druck',
-                'Double press'       => 'Doppeldruck'
+                'Short press' => 'Druck'
             ]
         ];
     }

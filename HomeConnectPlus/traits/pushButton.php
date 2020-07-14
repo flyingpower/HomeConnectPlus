@@ -12,26 +12,8 @@ class DeviceTraitButton
     {
         return [
             [
-                'label' => 'Short press',
-                'name'  => self::propertyPrefix . 'ShortID',
-                'width' => '200px',
-                'add'   => 0,
-                'edit'  => [
-                    'type' => 'SelectVariable'
-                ]
-            ],
-            [
-                'label' => 'Long press',
-                'name'  => self::propertyPrefix . 'LongID',
-                'width' => '200px',
-                'add'   => 0,
-                'edit'  => [
-                    'type' => 'SelectVariable'
-                ]
-            ],
-            [
-                'label' => 'Double press',
-                'name'  => self::propertyPrefix . 'DoubleID',
+                'label' => 'Press',
+                'name'  => self::propertyPrefix . 'PressID',
                 'width' => '200px',
                 'add'   => 0,
                 'edit'  => [
@@ -43,21 +25,10 @@ class DeviceTraitButton
 
     public static function getStatus($configuration)
     {
-        $currentStatus = self::getBoolCompatibility($configuration[self::propertyPrefix . 'ShortID']);
+        $currentStatus = self::getBoolCompatibility($configuration[self::propertyPrefix . 'PressID']);
         if ($currentStatus != 'OK') {
-            return 'Short: ' . $currentStatus;
+            return 'Press: ' . $currentStatus;
         }
-
-        $currentStatus = self::getBoolCompatibility($configuration[self::propertyPrefix . 'LongID']);
-        if ($currentStatus != 'Missing' && $currentStatus != 'OK') {
-            return 'Long: ' . $currentStatus;
-        }
-
-        $currentStatus = self::getBoolCompatibility($configuration[self::propertyPrefix . 'DoubleID']);
-        if ($currentStatus != 'Missing' && $currentStatus != 'OK') {
-            return 'Double: ' . $currentStatus;
-        }
-
         return 'OK';
     }
 
@@ -68,11 +39,9 @@ class DeviceTraitButton
 
     public static function doQuery($configuration)
     {
-        if (IPS_VariableExists($configuration[self::propertyPrefix . 'ShortID']) && IPS_VariableExists($configuration[self::propertyPrefix . 'LongID']) && IPS_VariableExists($configuration[self::propertyPrefix . 'DoubleID'])) {
+        if (IPS_VariableExists($configuration[self::propertyPrefix . 'PressID'])) {
             return [
-                'short'  => GetValue($configuration[self::propertyPrefix . 'ShortID']),
-                'long'  => GetValue($configuration[self::propertyPrefix . 'LongID']),
-                'double'  => GetValue($configuration[self::propertyPrefix . 'DoubleID'])
+                'press'  => GetValue($configuration[self::propertyPrefix . 'PressID'])
             ];
         } else {
             return [];
@@ -87,9 +56,7 @@ class DeviceTraitButton
     public static function getObjectIDs($configuration)
     {
         return [
-            $configuration[self::propertyPrefix . 'ShortID'],
-            $configuration[self::propertyPrefix . 'LongID'],
-            $configuration[self::propertyPrefix . 'DoubleID']
+            $configuration[self::propertyPrefix . 'PressID']
         ];
     }
 
