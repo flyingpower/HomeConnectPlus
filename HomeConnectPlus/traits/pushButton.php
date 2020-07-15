@@ -41,7 +41,7 @@ class DeviceTraitButton
     {
         if (IPS_VariableExists($configuration[self::propertyPrefix . 'ShortID'])) {
             return [
-                'press'  => IPS_GetVariable($configuration[self::propertyPrefix . 'ShortID'])['VariableChanged'] 
+                'press'  => IPS_GetVariable($configuration[self::propertyPrefix . 'ShortID'])['VariableUpdated'] 
             ];
         } else {
             return [];
