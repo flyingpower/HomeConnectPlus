@@ -49,8 +49,8 @@ class DeviceTraitWindowContact
              $value = $value?"open":"closed";
           } else {
             if ($value == 0) $value = "closed";
-            else if ($value == 1) $value = "open";
-            else if ($value == 2) $value = "tilted";
+            else if ($value == 1) $value = "tilted";
+            else if ($value == 2) $value = "open";
           }
             return [
                 'state'  =>  $value
