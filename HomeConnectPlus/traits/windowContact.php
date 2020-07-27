@@ -44,7 +44,7 @@ class DeviceTraitWindowContact
     {
         if (IPS_VariableExists($configuration[self::propertyPrefix . 'StateID']) ) {
           $type = IPS_GetVariable($configuration[self::propertyPrefix . 'StateID'])['VariableType'];
-          $value = IPS_GetValue($configuration[self::propertyPrefix . 'StateID']);
+          $value = GetValue($configuration[self::propertyPrefix . 'StateID']);
           if ($type == 0) {
              $value = $value?"open":"closed";
           } else {
